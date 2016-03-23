@@ -1,0 +1,355 @@
+@robotolight:robotolight;
+@robotoregular:robotoregular;
+@graycolor:#8d8b8c;
+@colorwhite:#fff;
+@font-face {
+  font-family: 'robotolight';
+  src: url('fonts/roboto-light.eot');
+  src: url('fonts/roboto-light.eot?#iefix') format('embedded-opentype'),
+  url('fonts/roboto-light.woff2') format('woff2'),
+  url('fonts/roboto-light.woff') format('woff'),
+  url('fonts/roboto-light.ttf') format('truetype'),
+  url('fonts/roboto-light.svg#robotolight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'robotoregular';
+  src: url('fonts/roboto-regular.eot');
+  src: url('fonts/roboto-regular.eot?#iefix') format('embedded-opentype'),
+  url('fonts/roboto-regular.woff2') format('woff2'),
+  url('fonts/roboto-regular.woff') format('woff'),
+  url('fonts/roboto-regular.ttf') format('truetype'),
+  url('fonts/roboto-regular.svg#robotoregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+
+}
+@font-face {
+  font-family: 'icomoon';
+  src:    url('fonts/icomoon.eot?3ktxxt');
+  src:    url('fonts/icomoon.eot?3ktxxt#iefix') format('embedded-opentype'),
+  url('fonts/icomoon.ttf?3ktxxt') format('truetype'),
+  url('fonts/icomoon.woff?3ktxxt') format('woff'),
+  url('fonts/icomoon.svg?3ktxxt#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-arrows_plus:before {
+  content: "\e900";
+}
+.icon-arrows_question:before {
+  content: "\e901";
+}
+.icon-arrows_right_double-31:before {
+  content: "\e902";
+}
+.icon-arrows_rotate_anti_dashed:before {
+  content: "\e903";
+}
+body{
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+  font-family: @robotolight;
+}
+ul.svgIcons{
+  width: 15%;
+  float: right;
+  li{
+    display: inline-block;
+    font-size: 32px;
+    img{
+      width: 50px;
+    }
+  }
+}
+#container {
+  width: 100%;
+}
+#top{
+  width: 90%;
+  margin: 0 80px;
+}
+main{
+  font-family: @robotoregular;
+  section{
+    float: left;
+    h3{
+      color: #cd2e27;
+    }
+  }
+}
+h1{
+  font-size: large;
+}
+header{
+  width: 100%;
+}
+.headerImage{
+  width: 100%;
+  float: left;
+}
+#imcImg{
+  padding: 75px 0;
+  width: 20%;
+}
+#bannerImg {
+  width: 79%;
+  box-shadow: 5px 5px 5px #888888;
+}
+nav{
+  display: block;
+  ul{
+    list-style: none;
+    padding: 35px 0px;
+    margin: 0px;
+    background: rgba(255,255,255,1);
+    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 77%, rgba(219,219,219,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(77%, rgba(246,246,246,1)), color-stop(100%, rgba(219,219,219,1)));
+    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 77%, rgba(219,219,219,1) 100%);
+    background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 77%, rgba(219,219,219,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 77%, rgba(219,219,219,1) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 77%, rgba(219,219,219,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dbdbdb', GradientType=0 );
+    li{
+      float: left;
+      color: #444444;
+      text-align: center;
+      font-size: medium;
+      font-weight: bold;
+      a{
+        color: @graycolor;
+        display: block;
+        padding: 0px 30px ;
+        text-decoration: none;
+
+      }
+    }
+  }
+}
+.selected{
+  color:#cd2e27;
+}
+.asideHeading{
+  background-color:#b5b5b5;
+}
+section{
+  ul{
+    list-style: none;
+    li{
+      float: left;
+    }
+  }
+  form{
+    label{
+      width: 25%;
+      float: left;
+      text-align: right;
+      padding-right: 10px;
+    }
+  }
+}
+#topSection{
+  display: block;
+  padding-left: 20px;
+  width: 68%;
+  float: left;
+}
+aside{
+  display: block;
+  width: 30%;
+  float: left;
+  input{
+    margin: 20px 0px 0px 20px;
+    height: 20px;
+    width: 230px;
+    border-style: solid;
+    border-width: thin;
+    border-color: #cd2e27;
+  }
+  button {
+    display:inline-block;
+    height: 24px;
+    border-style: solid;
+    border-width: thin;
+    border-color: #cd2e27;
+  }
+  ul{
+    list-style: none;
+    width: 85%;
+    padding-bottom: 10px;
+    float: left;
+    li{
+      display: block;
+      padding-top: 4px;
+      padding-bottom: 7px;
+      text-align: left;
+      a{
+        text-decoration: none;
+        padding: 10px 10px ;
+        font-size: large;
+        display: block;
+        border-bottom: 1px dotted #818081;
+      }
+    }
+  }
+}
+section.captionarea ul{
+  padding: 0px;
+  margin: 0px;
+  li{
+    float: left;
+    padding: 0px;
+  }
+}
+.search{
+  padding-left: 24px;
+}
+.name{
+  color: #168b44;
+  margin: 0px;
+}
+figcaption{
+  text-align: center;
+}
+main section{
+  width: 100%;
+}
+.figure1{
+  padding: 0px 160px 0px 0px;
+}
+.figure2{
+  padding: 0px 160px 0px 0px;
+}
+figure img{
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+}
+.clear{
+  clear: both;
+  &:after{
+    clear:both;
+  }
+}
+footer{
+  background-color: #58595b;
+  section{
+    display: block;
+    width:33.33%;
+    float:left;
+    color: @graycolor;
+    ul{
+      li{
+        .clear;
+        float: left;
+      }
+    }
+    p{
+      color: @colorwhite;
+    }
+  }
+}
+.copyright{
+  clear: both;
+  width: 100%;
+  text-align: center;
+  color: @graycolor;
+  ul{
+    .clear;
+    width: 100%;
+    padding-left: 510px;
+    li{
+      list-style: none;
+      float: left;
+      text-decoration: none;
+      border-right: 2px solid @graycolor;
+      a{
+        text-decoration: none;
+        color: @graycolor;
+        padding: 0px 10px;
+      }
+    }
+  }
+  p{
+    font-size: 15px;
+    margin: 10px;
+    padding-bottom: 10px;
+  }
+}
+form input{
+  border-radius: 25px;
+  height: 25px;
+  width: 250px;
+}
+.submitButton{
+  float: right;
+  width: 100px;
+  height: 30px;
+  color: @colorwhite;
+  background: rgba(2,51,78,1);
+  background: -moz-linear-gradient(top, rgba(2,51,78,1) 0%, rgba(10,98,136,1) 49%, rgba(10,98,136,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(2,51,78,1)), color-stop(49%, rgba(10,98,136,1)), color-stop(100%, rgba(10,98,136,1)));
+  background: -webkit-linear-gradient(top, rgba(2,51,78,1) 0%, rgba(10,98,136,1) 49%, rgba(10,98,136,1) 100%);
+  background: -o-linear-gradient(top, rgba(2,51,78,1) 0%, rgba(10,98,136,1) 49%, rgba(10,98,136,1) 100%);
+  background: -ms-linear-gradient(top, rgba(2,51,78,1) 0%, rgba(10,98,136,1) 49%, rgba(10,98,136,1) 100%);
+  background: linear-gradient(to bottom, rgba(2,51,78,1) 0%, rgba(10,98,136,1) 49%, rgba(10,98,136,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02334e', endColorstr='#0a6288', GradientType=0 );
+  border: 1px solid #333;
+  border-radius: 8px;
+  margin-right: 155px;
+  margin-top: 15px;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 500px) {
+  .green{
+    color: green;
+  }
+  aside input {
+    width:162px;
+  }
+  section.captionarea ul li{
+    float: none;
+  }
+  section.captionarea ul li figure{
+    float: left;
+  }
+  .clearresponsive{
+    clear: both;
+  }
+  #imcImg{
+    width: 90%;
+  }
+  #bannerImg{
+    display: none;
+  }
+  body{
+    width: 480px;
+  }
+  .icon{
+    width: 0px;
+    height: 0px;
+    display:none;
+  }
+  footer section{
+    float: none;
+  }
+}

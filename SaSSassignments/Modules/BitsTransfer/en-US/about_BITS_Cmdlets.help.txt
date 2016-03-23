@@ -1,0 +1,167 @@
+TOPIC
+    about_BITS_Cmdlets
+
+SHORT DESCRIPTION
+    Provides background information about the Background Intelligent Transfer
+    Service (BITS).
+    
+LONG DESCRIPTION
+    This topic provides information about BITS, BITS transfer types, BITS 
+    transfer persistence, BITS transfer priority, the Windows PowerShell and
+    BITS cmdlets, and BITS server configuration. This topic also provides 
+    links to more information about BITS.
+
+                 
+  About BITS
+
+      BITS is a file transfer service that provides a scriptable interface 
+      through Windows PowerShell. BITS transfers files asynchronously in the 
+      foreground or in the background. And, it automatically resumes file 
+      transfers after network disconnections and after a computer is restarted.
+   
+      Background transfers use only idle network bandwidth in an effort to 
+      preserve the user’s interactive experience with other network 
+      applications such as Internet Explorer. BITS does this by examining the 
+      network traffic and then using only the idle portion of the network 
+      bandwidth. BITS continuously throttles its use of the bandwidth as the
+      user increases or decreases their use of the bandwidth. BITS performs 
+      the transfers asynchronously, which means that your program or script 
+      does not have to be running for BITS to perform the transfer. Both
+      uploads and downloads are supported. BITS is particularly suitable for
+      copying files from an HTTP location in an Internet Information Services 
+      virtual directory to the logical drive of a client. Standard server 
+      message block (SMB) copy operations are also supported. In addition to
+      the scripting interface provided by Windows PowerShell, BITS provides a 
+      set of COM APIs to allow programming access. 
+
+    
+  BITS Transfer Types
+
+      There are three types of BITS transfer jobs:
+
+          - A download job downloads files to the client computer.
+
+          - An upload job uploads a file to the server.
+
+          - An upload-reply job uploads a file to the server and receives a 
+            reply file from the server application.
+
+    
+  BITS Transfer Persistence
+
+      BITS continues to transfer files after an application exits if the user 
+      who initiated the transfer remains logged on and if a network connection
+      is maintained. BITS suspends the transfer if a connection is lost or if 
+      the user logs off. BITS also persists the transfer information when a 
+      user logs off, when network disconnections occur, and when a computer is
+      restarted. When the user logs on again, when the network is reconnected, 
+      and when the computer is restarted, BITS resumes the user's transfer 
+      job. 
+
+
+  BITS Transfer Priority
+
+      BITS provides one foreground and three background priority levels that 
+      you can use to prioritize transfer jobs. Higher priority jobs preempt
+      lower priority jobs. Jobs at the same priority level share transfer time,
+      which prevents a large job from blocking small jobs in the transfer 
+      queue. Lower priority jobs do not receive transfer time until all the 
+      higher priority jobs are complete or in an error state. Background 
+      transfers are optimal because BITS uses idle network bandwidth to 
+      transfer the files. BITS increases or decreases the rate at which files 
+      are transferred based on the amount of idle network bandwidth that is 
+      available. If a network application begins to consume more bandwidth, 
+      BITS decreases its transfer rate to preserve the user's interactive 
+      experience. BITS supports multiple foreground jobs and one background
+      transfer job at the same time.
+
+
+  Windows PowerShell and the BITS Cmdlets
+
+      Windows PowerShell implements BITS functionality through the BITS module
+      for Windows PowerShell. The BITS module loads a set of BITS-specific 
+      cmdlets. You can use these cmdlets to complete the end-to-end tasks 
+      that are necessary to manage the transfer of files between computers.
+ 
+      When the BITS module for Windows PowerShell is loaded, the following 
+      BITS cmdlets are available.
+
+     
+          Cmdlet                  Descriptions
+          ---------               --------------------------------
+          Add-BitsFile            Adds one or more files to a BITS transfer.
+          Complete-BitsTransfer   Completes a BITS transfer.
+          Get-BitsTransfer        Gets a single or multiple BITS transfer.
+          Remove-BitsTransfer     Deletes a BITS transfer.
+          Resume-BitsTransfer     Resumes a suspended BITS transfer.
+          Set-BitsTransfer        Configures BITS transfer jobs.
+          Start-BitsTransfer      Creates and starts a BITS transfer job.
+          Suspend-BitsTransfer    Suspends a BITS transfer job.
+ 
+      To copy a file using BITS:
+
+          1. Create a BITS transfer job by using the Start-BitsTranfer cmdlet,
+             optionally with the Suspend parameter. 
+
+          2. Add files to the BITS transfer job by using the Add-BitsFile 
+             cmdlet. 
+
+          3. Start the BITS transfer by using the Resume-BitsTransfer cmdlet. 
+
+          4. Check the status of the BITS transfer job by using the 
+             Get-BitsTransfer cmdlet.
+ 
+  Sample Commands
+   
+      A simple Windows PowerShell BITS file transfer command might resemble 
+      the following command:
+     
+        C:\PS> Start-BitsTransfer http://server01/servertestdir/testfile1.txt c:\clienttestdir\testfile1.txt
+     
+      
+      A slightly more complex Windows PowerShell BITS file transfer set of 
+      commands might resemble the following command:
+     
+        C:\PS> Import-CSV filelist.txt | Start-BitsTransfer -TransferType Upload
+
+
+  BITS Server Configuration
+
+      Background Intelligent Transfer Services (BITS) server extends Internet 
+      Information Services (IIS) to support throttled uploads that can be 
+      restarted. To upload files to a server by using BITS, the server must 
+      be running IIS 7.0 and Windows Server 2008. Additionally, the BITS server
+      extension for the Internet Server Application Programming Interface 
+      (ISAPI) must be installed. The BITS server extension is a subcomponent of
+      IIS. To use the upload feature, create an IIS virtual directory on the 
+      server where clients can upload files. Create a virtual directory for 
+      each type of client. BITS adds properties to the IIS metabase 
+      for the virtual directory that you create, and it uses these properties 
+      to determine how to upload the files. For more information, see 
+     "Setting Up the Server for Uploads" in the MSDN library at 
+      http://go.microsoft.com/fwlink/?LinkId=142215.
+
+
+  More Information about BITS
+    
+      For more information about BITS, see the following topics in the MSDN
+      (Microsoft Developer Network) library:
+ 
+        - "Background Intelligent Transfer Service"
+          http://go.microsoft.com/fwlink/?LinkId=142216
+    
+        - "About BITS"
+          http://go.microsoft.com/fwlink/?LinkId=142217
+ 
+
+SEE ALSO
+    Online version: http://go.microsoft.com/fwlink/?LinkId=142218
+    Add-BitsFile
+    Complete-BitsTransfer
+    Get-BitsTransfer
+    Remove-BitsTransfer
+    Resume-BitsTransfer
+    Set-BitsTransfer
+    Start-BitsTransfer
+    Suspend-BitsTransfer
+ 

@@ -1,0 +1,3061 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<helpItems schema="maml">
+
+<!-- v 1.1.0.9 -->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>
+                   Add-BitsFile
+		</command:name>
+		<maml:description>
+			<maml:para>Adds one or more files to an existing Background Intelligent Transfer Service (BITS) transfer job.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para></maml:para>
+		</maml:copyright>
+		<command:verb>Add</command:verb>
+		<command:noun>BitsFile</command:noun>
+		<dev:version></dev:version>
+	</command:details>
+	<maml:description>
+		<maml:para>The Add-BitsFile cmdlet adds files to a BITS transfer job. You can specify the files to add to the BITS transfer job by name at the command prompt or in a comma-separated value (CSV) file.
+
+Important: An upload job can contain only one file. To upload more than one file, use the Import-CSV cmdlet, and pipe the output to the Add-BitsFile cmdlet. For more information, see example 3 in this Help topic. Or, use a cabinet file (.cab) or a compressed file (.zip).
+</maml:para>
+	</maml:description>
+	<!-- Cmdlet syntax section-->
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Add-BitsFile</maml:name>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+				<maml:name>BitsJob</maml:name>
+				<maml:description>
+					<maml:para>Specifies the BITS transfer jobs to which you want to add files. You can pipe a value to this parameter from other cmdlets that return BitsJob objects, such as Get-BitsTransfer.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">BitsJob[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="true" globbing="true" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>Source</maml:name>
+				<maml:description>
+					<maml:para>Specifies the source location and the names of the files that you want to transfer. The source file names are paired with the corresponding destination file names. For example, the first file name specified in the Source parameter corresponds to the first file name in the Destination parameter, and the second file name in the Source parameter corresponds to the second file name in the Destination parameter. The Source and Destination parameters must have the same number of elements; otherwise, the command produces an error. You can use standard wildcard characters such as the asterisk (*) and the question mark (?), or you can use a range operator such as &quot;[a-r]&quot;. </maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+				<maml:name>Destination</maml:name>
+				<maml:description>
+					<maml:para>Specifies the destination location and the names of the files that you want to transfer. The destination names are paired with the corresponding source file names. For example, the first file name specified in the Source parameter corresponds to the first file name in the Destination parameter, and the second file name in the Source parameter corresponds to the second file name in the Destination parameter. The Source and Destination parameters must have the same number of elements; otherwise, the command produces an error.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>Confirm</maml:name>
+    			<maml:description>
+				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
+    			</maml:description>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>WhatIf</maml:name>
+    			<maml:description>
+				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+    			</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<!-- Cmdlet parameter section  -->
+	<command:parameters>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+			<maml:name>BitsJob</maml:name>
+			<maml:description>
+				<maml:para>Specifies the BITS transfer jobs to which you want to add files. You can pipe a value to this parameter from other cmdlets that return BitsJob objects, such as Get-BitsTransfer.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">BitsJob[]</command:parameterValue>
+			<dev:type>
+				<maml:name>BitsJob[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+			<maml:name>Destination</maml:name>
+			<maml:description>
+				<maml:para>Specifies the destination location and the names of the files that you want to transfer. The destination names are paired with the corresponding source file names. For example, the first file name specified in the Source parameter corresponds to the first file name in the Destination parameter, and the second file name in the Source parameter corresponds to the second file name in the Destination parameter. The Source and Destination parameters must have the same number of elements; otherwise, the command produces an error.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+			<dev:type>
+				<maml:name>string[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="true" pipelineInput="true (ByPropertyName)" position="2">
+			<maml:name>Source</maml:name>
+			<maml:description>
+				<maml:para>Specifies the source location and the names of the files that you want to transfer. The source file names are paired with the corresponding destination file names. For example, the first file name specified in the Source parameter corresponds to the first file name in the Destination parameter, and the second file name in the Source parameter corresponds to the second file name in the Destination parameter. The Source and Destination parameters must have the same number of elements; otherwise, the command produces an error. You can use standard wildcard characters such as the asterisk (*) and the question mark (?), or you can use a range operator such as &quot;[a-r]&quot;. </maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+			<dev:type>
+				<maml:name>string[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>Confirm</maml:name>
+    			<maml:description>
+				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
+    			</maml:description>
+    			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>	
+				<dev:type>
+  				<maml:name>SwitchParameter</maml:name> 
+					<maml:uri /> 
+					</dev:type>
+ 			<dev:defaultValue /> 
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>WhatIf</maml:name>
+    			<maml:description>
+				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+    			</maml:description>
+    			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>	
+				<dev:type>
+  				<maml:name>SwitchParameter</maml:name> 
+					<maml:uri /> 
+					</dev:type>
+ 			<dev:defaultValue /> 
+			</command:parameter>
+	</command:parameters>
+	<!-- Input - Output section-->
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name>Microsoft.BackgroundIntelligentTransfer.Management.BitsJob[]</maml:name>
+				<maml:uri/>
+				<maml:description />
+			</dev:type>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					This cmdlet accepts one or more BitsJob objects as input that populates the BitsJob parameter.
+				</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Microsoft.BackgroundIntelligentTransfer.Management.BitsJob[]</maml:name>
+				<maml:uri />
+				<maml:description />
+			</dev:type>   
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					This cmdlet generates the BitsJob objects that are associated with the BITS transfer jobs to which the files were added.
+				</maml:para>
+			</maml:description> 
+		</command:returnValue>
+	</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>
+                          
+                        </maml:para>
+		</maml:alert>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<!-- Example section  --> 
+	<command:examples>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Get-BitsTransfer -JobId 10778CFA-C1D7-4A82-8A9D-80B19224879C | Add-BitsFile -Source http://server01/servertestdir/testfile1.txt -Destination c:\clienttestdir\testfile1.txt                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command appends a file to the transfer queue of an existing BITS transfer job. 
+
+In this example, the output of the Get-BitsTransfer cmdlet is a BitsJob object that is identified by its unique job ID. The command pipes the job ID to the Add-BitsFile cmdlet. The local and remote names of the file are in the parameters. </maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 2 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+$b = Get-BitsTransfer -JobId 10778CFA-C1D7-4A82-8A9D-80B19224879C
+Add-BitsFile -BitsJob $b -Source http://server01/servertestdir/testfile1.txt, http://server01/servertestdir/testfile2.txt  -Destination c:\clienttestdir\testfile1.txt, c:\clienttestdir\testfile2.txt                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command appends a set of files to the transfer queue of an existing BITS transfer job. 
+
+The first command retrieves the BITS transfer job that is identified by the job ID and then stores it in the $b variable. The second command uses the BitsJob parameter to pass the BitsJob object that is stored in the $b variable to Add-BitsFile.
+
+The server file names are paired with the corresponding client file names.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 3 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+$b = Start-BitsTransfer -Suspended
+Import-CSV filelist.txt | Add-BitsFile -BitsJob $b 
+Resume-BitsTransfer -BitsJob $b                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>These commands add a set of files to the transfer queue of a new BITS transfer job.
+
+The first command creates a new BitsJob object and then stores it in the $b variable.
+
+The second command uses the Import-CSV cmdlet to import a text file that contains a list of files to be transferred. The text file is converted to an array of objects (one per line) and passed through the pipeline to the Add-BitsFile cmdlet. The BitsJob parameter is used to pass the BitsJob object (the transfer job) that is stored in the $b variable to the Add-BitsFile cmdlet. This command also updates the transfer job with the list of files to be transferred. 
+
+The third command passes the BitsJob object that is stored in the $b variable to the Resume-BitsTransfer cmdlet. The BITS transfer job is restarted, and the files that are specified in the Filelist.txt file are transferred from the source to the destination.
+
+
+The &quot;Import-CSV filelist.txt&quot; element of the second command imports a text file that contains the list of files to be transferred. Each line of this file specifies a file to be transferred, in the &lt;Source&gt;,&lt;Destination&gt; format. The text file is converted to an array of objects (one per line) and passed through the pipeline. In this example, the array of objects is passed to the Add-BitsFile cmdlet.
+
+The contents of the Filelist.txt file resemble the following information: 
+
+
+  Source, Destination
+  http://server01/servertestdir/testfile1.txt, c:\clienttestdir\testfile1.txt 
+  http://server01/servertestdir/testfile2.txt, c:\clienttestdir\testfile2.txt 
+  http://server01/servertestdir/testfile3.txt, c:\clienttestdir\testfile3.txt 
+  http://server01/servertestdir/testfile4.txt, c:\clienttestdir\testfile4.txt
+
+</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<!-- Link section  -->
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>http://go.microsoft.com/fwlink/?LinkId=141425</maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Complete-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Get-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Remove-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Resume-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Set-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Start-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Suspend-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+
+
+<!-- v 1.1.0.9 -->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>
+                   Complete-BitsTransfer
+		</command:name>
+		<maml:description>
+			<maml:para>Completes a Background Intelligent Transfer Service (BITS) transfer job.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para></maml:para>
+		</maml:copyright>
+		<command:verb>Complete</command:verb>
+		<command:noun>BitsTransfer</command:noun>
+		<dev:version></dev:version>
+	</command:details>
+	<maml:description>
+		<maml:para>The Complete-BitsTransfer cmdlet ends one or more BITS transfer jobs and then saves the files on the client computer. If an error occurs, the associated BitsJob object is written to the error pipeline.</maml:para>
+	</maml:description>
+	<!-- Cmdlet syntax section-->
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Complete-BitsTransfer</maml:name>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+				<maml:name>BitsJob</maml:name>
+				<maml:description>
+					<maml:para>Specifies the BITS transfer jobs to complete. You can pipe a value to this parameter from other cmdlets that return BitsJob objects, such as Get-BitsTransfer.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">BitsJob[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>Confirm</maml:name>
+    			<maml:description>
+				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
+    			</maml:description>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>WhatIf</maml:name>
+    			<maml:description>
+				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+    			</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<!-- Cmdlet parameter section  -->
+	<command:parameters>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+			<maml:name>BitsJob</maml:name>
+			<maml:description>
+				<maml:para>Specifies the BITS transfer jobs to complete. You can pipe a value to this parameter from other cmdlets that return BitsJob objects, such as Get-BitsTransfer.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">BitsJob[]</command:parameterValue>
+			<dev:type>
+				<maml:name>BitsJob[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>Confirm</maml:name>
+    			<maml:description>
+				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
+    			</maml:description>
+    			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>	
+				<dev:type>
+  				<maml:name>SwitchParameter</maml:name> 
+					<maml:uri /> 
+					</dev:type>
+ 			<dev:defaultValue /> 
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>WhatIf</maml:name>
+    			<maml:description>
+				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+    			</maml:description>
+    			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>	
+				<dev:type>
+  				<maml:name>SwitchParameter</maml:name> 
+					<maml:uri /> 
+					</dev:type>
+ 			<dev:defaultValue /> 
+			</command:parameter>
+	</command:parameters>
+	<!-- Input - Output section-->
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name>Microsoft.BackgroundIntelligentTransfer.Management.BitsJob[]</maml:name>
+				<maml:uri/>
+				<maml:description />
+			</dev:type>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					This cmdlet accepts one or more BitsJob objects as input that populates the BitsJob parameter.
+				</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>None</maml:name>
+				<maml:uri />
+				<maml:description />
+			</dev:type>   
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					This cmdlet does not generate any output.
+				</maml:para>
+			</maml:description> 
+		</command:returnValue>
+	</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>
+                          
+                        </maml:para>
+		</maml:alert>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<!-- Example section  --> 
+	<command:examples>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Get-BitsTransfer | Complete-BitsTransfer                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command completes all the BITS transfer jobs that are owned by the current user. 
+
+In this command, the output of the Get-BitsTransfer cmdlet is piped to the Complete-BitsTransfer cmdlet. The output is a set of BitsJob objects. </maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 2 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+$b = Get-BitsTransfer -AllUsers
+Complete-BitsTransfer -BitsJob $b                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>These commands complete all the BITS transfer jobs on the computer.
+
+The first command retrieves all the BitsJob objects on the computer and then stores them in the $b variable.
+
+The second command uses the BitsJob parameter to pass the BitsJob objects that are stored in the $b variable to the Complete-BitsTransfer cmdlet.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 3 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Get-BitsTransfer -Name testjob1 | Complete-BitsTransfer                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command completes the BITS transfer job that is identified by the specified display name. 
+
+The output of the Get-BitsTransfer cmdlet is a BitsJob object. This output is piped to the Complete-BitsTransfer cmdlet. </maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<!-- Link section  -->
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>http://go.microsoft.com/fwlink/?LinkId=141427</maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Add-BitsFile</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Get-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Remove-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Resume-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Set-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Start-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Suspend-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+
+
+<!-- v 1.1.0.9 -->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>
+                   Get-BitsTransfer
+		</command:name>
+		<maml:description>
+			<maml:para>Retrieves the associated BitsJob object for an existing Background Intelligent Transfer Service (BITS) transfer job.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para></maml:para>
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>BitsTransfer</command:noun>
+		<dev:version></dev:version>
+	</command:details>
+	<maml:description>
+		<maml:para>The Get-BitsTransfer cmdlet retrieves a set of BITS transfer jobs. By default, the cmdlet returns the jobs that are owned by the current user. However, if you have  administrative credentials, you can specify the AllUsers parameter so that the command returns jobs that are owned by all users. The returned jobs can be filtered by name or ID. The jobs are represented by BitsJob objects. </maml:para>
+	</maml:description>
+	<!-- Cmdlet syntax section-->
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-BitsTransfer</maml:name>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="1">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Filters the returned BITS jobs based on job name. Only BITS jobs with job names that match a name in this array are returned. You can use standard wildcard characters  such as the asterisk (*) and the question mark (?). Or, you can use a range operator such as&quot;[a-r]&quot;. 
+
+For example, you can use any of the following commands:
+
+      Get-BitsTransfer -Name &quot;BITS*&quot;
+      Get-BitsTransfer -Name &quot;BITS Transfe?&quot;
+      Get-BitsTransfer -Name &quot;BITS Transfe[a-r]&quot; 
+
+A combination of the wildcard character and range operators is also possible. </maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>AllUsers</maml:name>
+				<maml:description>
+					<maml:para>Returns BITS transfer jobs that are owned by all users. If this parameter is not specified, only jobs that are owned by the current user are returned. This parameter requires administrative credentials. </maml:para>
+				</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-BitsTransfer</maml:name>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>JobId</maml:name>
+				<maml:description>
+					<maml:para>Filters the returned BITS jobs by job ID. Only the BITS jobs that include a job ID in this array are returned. If BitsJob objects are piped to this cmdlet, their job IDs are used as the values of this parameter.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Guid[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<!-- Cmdlet parameter section  -->
+	<command:parameters>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+			<maml:name>AllUsers</maml:name>
+			<maml:description>
+				<maml:para>Returns BITS transfer jobs that are owned by all users. If this parameter is not specified, only jobs that are owned by the current user are returned. This parameter requires administrative credentials. </maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>Current</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>JobId</maml:name>
+			<maml:description>
+				<maml:para>Filters the returned BITS jobs by job ID. Only the BITS jobs that include a job ID in this array are returned. If BitsJob objects are piped to this cmdlet, their job IDs are used as the values of this parameter.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Guid[]</command:parameterValue>
+			<dev:type>
+				<maml:name>Guid[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="1">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Filters the returned BITS jobs based on job name. Only BITS jobs with job names that match a name in this array are returned. You can use standard wildcard characters  such as the asterisk (*) and the question mark (?). Or, you can use a range operator such as&quot;[a-r]&quot;. 
+
+For example, you can use any of the following commands:
+
+      Get-BitsTransfer -Name &quot;BITS*&quot;
+      Get-BitsTransfer -Name &quot;BITS Transfe?&quot;
+      Get-BitsTransfer -Name &quot;BITS Transfe[a-r]&quot; 
+
+A combination of the wildcard character and range operators is also possible. </maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+			<dev:type>
+				<maml:name>string[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<!-- Input - Output section-->
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name>Microsoft.BackgroundIntelligentTransfer.Management.BitsJob[]</maml:name>
+				<maml:uri/>
+				<maml:description />
+			</dev:type>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					This cmdlet accepts one or more BitsJob objects as input that populates the JobId parameter (based on the property name).
+				</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Microsoft.BackgroundIntelligentTransfer.Management.BitsJob[]</maml:name>
+				<maml:uri />
+				<maml:description />
+			</dev:type>   
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					This cmdlet generates the BitsJob objects that are associated with the retrieved BITS transfer jobs.
+				</maml:para>
+			</maml:description> 
+		</command:returnValue>
+	</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>
+                          
+                        </maml:para>
+		</maml:alert>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<!-- Example section  --> 
+	<command:examples>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Get-BitsTransfer
+
+JobId                   DisplayName             TransferType            JobState                OwnerAccount
+-----                   -----------             ------------            --------                ------------
+07acbe90-7d25-4d05-a... TestJob2                Download                Suspended               DOMAIN01\user01
+c0dd3d8c-c3a2-4562-8... TestJob1                Download                Transferred             DOMAIN01\user01
+1ef8c549-7a92-4173-b... BitsJobTransfer         Download                Transferred             DOMAIN01\user01
+2c8302d5-3f44-4981-8... BitsJobTransfer         Download                Transferred             DOMAIN01\user01
+                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command returns all the BitsJob objects that are owned by the current user.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 2 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Get-BitsTransfer -JobId C0DD3D8C-C3A2-4562-80B19224879C
+
+JobId                   DisplayName             TransferType            JobState                OwnerAccount
+-----                   -----------             ------------            --------                ------------
+c0dd3d8c-c3a2-4562-8... TestJob1                Download                Transferred             DOMAIN01\user01
+                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command returns the BitsJob object that is identified by the specified job ID.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 3 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Get-BitsTransfer -AllUsers -Name *Microsoft*, *Windows*
+
+JobId                   DisplayName             TransferType            JobState                OwnerAccount
+-----                   -----------             ------------            --------                ------------
+07acbe90-7d25-4d05-a... MicrosoftTest           Download                Suspended               DOMAIN01\user01
+c0dd3d8c-c3a2-4562-8... WindowsTest             Download                Transferred             DOMAIN01\user02
+                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command returns all the BitsJob objects, owned by all users, where the DisplayName property of the BitsJob object contains either &quot;Microsoft&quot; or &quot;Windows&quot;. If the user does not have administrative credentials, this command returns an error because it uses the AllUsers parameter.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 4 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Get-BitsTransfer -Name testjob1
+
+JobId                   DisplayName             TransferType            JobState                OwnerAccount
+-----                   -----------             ------------            --------                ------------
+c0dd3d8c-c3a2-4562-8... TestJob1                Download                Transferred             DOMAIN01\user01
+                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command returns the BitsJob object that is identified by the specified display name.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<!-- Link section  -->
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>http://go.microsoft.com/fwlink/?LinkId=141429</maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Add-BitsFile</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Complete-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Remove-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Resume-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Set-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Start-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Suspend-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+
+
+<!-- v 1.1.0.9 -->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>
+                   Remove-BitsTransfer
+		</command:name>
+		<maml:description>
+			<maml:para>Cancels a Background Intelligent Transfer Service (BITS) transfer job.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para></maml:para>
+		</maml:copyright>
+		<command:verb>Remove</command:verb>
+		<command:noun>BitsTransfer</command:noun>
+		<dev:version></dev:version>
+	</command:details>
+	<maml:description>
+		<maml:para>The Remove-BitsTransfer cmdlet cancels a BITS transfer job. It deletes the underlying transfer job, removes any temporary files from the client, and deletes the associated BitsJob object. 
+
+When the Remove-BitsTransfer cmdlet cancels a transfer job, it deletes all the transfers. Consider a scenario is which you are transferring three files. One file is completely transferred, one file is pending, and one file is currently being transferred. In this scenario, Remove-BitsTransfer cancels the whole transfer and deletes the underlying files. Any files that were already transferred will not be available after you use the Remove-BitsTransfer cmdlet to cancel the transfer job. Optionally, you can use a Complete-BitsTransfer command to commit any files that are completely downloaded and to cancel the pending and current transfers. The transferred file  would not be deleted and would be available. </maml:para>
+	</maml:description>
+	<!-- Cmdlet syntax section-->
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Remove-BitsTransfer</maml:name>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+				<maml:name>BitsJob</maml:name>
+				<maml:description>
+					<maml:para>Specifies the BITS transfer jobs to cancel. You can pipe a value to this parameter from other cmdlets that return BitsJob objects, such as Get-BitsTransfer.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">BitsJob[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>Confirm</maml:name>
+    			<maml:description>
+				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
+    			</maml:description>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>WhatIf</maml:name>
+    			<maml:description>
+				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+    			</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<!-- Cmdlet parameter section  -->
+	<command:parameters>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+			<maml:name>BitsJob</maml:name>
+			<maml:description>
+				<maml:para>Specifies the BITS transfer jobs to cancel. You can pipe a value to this parameter from other cmdlets that return BitsJob objects, such as Get-BitsTransfer.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">BitsJob[]</command:parameterValue>
+			<dev:type>
+				<maml:name>BitsJob[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>Confirm</maml:name>
+    			<maml:description>
+				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
+    			</maml:description>
+    			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>	
+				<dev:type>
+  				<maml:name>SwitchParameter</maml:name> 
+					<maml:uri /> 
+					</dev:type>
+ 			<dev:defaultValue /> 
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>WhatIf</maml:name>
+    			<maml:description>
+				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+    			</maml:description>
+    			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>	
+				<dev:type>
+  				<maml:name>SwitchParameter</maml:name> 
+					<maml:uri /> 
+					</dev:type>
+ 			<dev:defaultValue /> 
+			</command:parameter>
+	</command:parameters>
+	<!-- Input - Output section-->
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name>Microsoft.BackgroundIntelligentTransfer.Management.BitsJob[]</maml:name>
+				<maml:uri/>
+				<maml:description />
+			</dev:type>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					This cmdlet accepts one or more BitsJob objects as input that populates the BitsJob parameter.
+				</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>None</maml:name>
+				<maml:uri />
+				<maml:description />
+			</dev:type>   
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					This cmdlet does not generate any output.
+				</maml:para>
+			</maml:description> 
+		</command:returnValue>
+	</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>
+                          After a job is removed (canceled) or completed, any job objects that were previously cached in variables or in scripts are no longer valid.
+                        </maml:para>
+		</maml:alert>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<!-- Example section  --> 
+	<command:examples>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Get-BitsTransfer | Remove-BitsTransfer                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command cancels all the BITS transfer jobs that are owned by the current user. 
+
+The output of the Get-BitsTransfer cmdlet is piped to the Remove-BitsTransfer cmdlet. The output is a set of BitsJob objects.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 2 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+$b = Get-BitsTransfer -AllUsers
+Remove-BitsTransfer -BitsJob $b                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command cancels all the BITS transfer jobs on the computer.
+
+The first command retrieves all the BitsJob objects on the computer and then stores them in the $b variable.
+
+The second command uses the BitsJob parameter to pass the BitsJob objects that are stored in the $b variable to the Remove-BitsTransfer cmdlet.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<!-- Link section  -->
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>http://go.microsoft.com/fwlink/?LinkId=141431</maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Add-BitsFile</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Complete-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Get-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Resume-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Set-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Start-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Suspend-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+
+
+<!-- v 1.1.0.9 -->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>
+                   Resume-BitsTransfer
+		</command:name>
+		<maml:description>
+			<maml:para>Resumes a Background Intelligent Transfer Service (BITS) transfer job.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para></maml:para>
+		</maml:copyright>
+		<command:verb>Resume</command:verb>
+		<command:noun>BitsTransfer</command:noun>
+		<dev:version></dev:version>
+	</command:details>
+	<maml:description>
+		<maml:para>The Resume-BitsTransfer cmdlet resumes one or more suspended BITS transfer jobs. If the BITS transfer is already in process, the cmdlet does nothing. You can view the current state of a transfer job by using the Get-BitsTransfer cmdlet.
+
+Important: By default, the Resume-BitsTransfer cmdlet restarts the transfer job synchronously even if the original job was specified as an asynchronous transfer job. You could use this behavior to convert an asynchronous transfer job into a synchronous transfer job. You could do this if either of the following conditions is true:
+
+- The asynchronous transfer job was created outside cmdlets.
+- The asynchronous transfer job was created by using the Start-BitsTransfer cmdlet.
+
+If you want to restart the transfer job as an asynchronous transfer, use the Asynchronous parameter.</maml:para>
+	</maml:description>
+	<!-- Cmdlet syntax section-->
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Resume-BitsTransfer</maml:name>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+				<maml:name>BitsJob</maml:name>
+				<maml:description>
+					<maml:para>Specifies the BITS transfer jobs to resume. You can pipe a value to this parameter from other cmdlets that return BitsJob objects, such as Get-BitsTransfer.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">BitsJob[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Asynchronous</maml:name>
+				<maml:description>
+					<maml:para>Allows the BITS transfer job to be processed in the background. The command prompt reappears immediately after the BITS transfer job is resumed. The returned BitsJob object can be used to monitor status and progress.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>Confirm</maml:name>
+    			<maml:description>
+				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
+    			</maml:description>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>WhatIf</maml:name>
+    			<maml:description>
+				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+    			</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<!-- Cmdlet parameter section  -->
+	<command:parameters>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Asynchronous</maml:name>
+			<maml:description>
+				<maml:para>Allows the BITS transfer job to be processed in the background. The command prompt reappears immediately after the BITS transfer job is resumed. The returned BitsJob object can be used to monitor status and progress.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+			<maml:name>BitsJob</maml:name>
+			<maml:description>
+				<maml:para>Specifies the BITS transfer jobs to resume. You can pipe a value to this parameter from other cmdlets that return BitsJob objects, such as Get-BitsTransfer.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">BitsJob[]</command:parameterValue>
+			<dev:type>
+				<maml:name>BitsJob[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>Confirm</maml:name>
+    			<maml:description>
+				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
+    			</maml:description>
+    			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>	
+				<dev:type>
+  				<maml:name>SwitchParameter</maml:name> 
+					<maml:uri /> 
+					</dev:type>
+ 			<dev:defaultValue /> 
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>WhatIf</maml:name>
+    			<maml:description>
+				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+    			</maml:description>
+    			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>	
+				<dev:type>
+  				<maml:name>SwitchParameter</maml:name> 
+					<maml:uri /> 
+					</dev:type>
+ 			<dev:defaultValue /> 
+			</command:parameter>
+	</command:parameters>
+	<!-- Input - Output section-->
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name>Microsoft.BackgroundIntelligentTransfer.Management.BitsJob[]</maml:name>
+				<maml:uri/>
+				<maml:description />
+			</dev:type>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					This cmdlet accepts one or more BitsJob objects as input that populates the BitsJob parameter.
+				</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Microsoft.BackgroundIntelligentTransfer.Management.BitsJob[]</maml:name>
+				<maml:uri />
+				<maml:description />
+			</dev:type>   
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					When called with the Asynchronous parameter, this cmdlet sends the BitsJob object that is associated with the resumed BITS transfer job as output. Otherwise, no output is generated.
+				</maml:para>
+			</maml:description> 
+		</command:returnValue>
+	</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>
+                          You can cancel a transfer job that is running in synchronous mode (foreground priority) by pressing CTRL+C.
+                        </maml:para>
+		</maml:alert>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<!-- Example section  --> 
+	<command:examples>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Get-BitsTransfer | Resume-BitsTransfer                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command resumes all the BITS transfer jobs that are owned by the current user. 
+
+The command prompt returns after the jobs are complete or after the jobs enter an error state. The output of the Get-BitsTransfer cmdlet is a set of BitsJob objects. This output is piped to the Resume-BitsTransfer cmdlet. If any of the BITS transfer jobs are already active, they will continue to run.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 2 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+$b = Start-BitsTransfer -DisplayName &quot;MyJob&quot; -Suspended
+Add-BitsTransfer -BitsJob $b -ClientFileName C:\myFile -ServerFileName http://www.mysite.com/file1
+Resume-BitsTransfer -BitsJob $b -Asynchronous                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command resumes a new BITS transfer job that was initially suspended, and it returns the command prompt immediately.
+
+The first command creates a new BitsJob object in a suspended state and then stores it in the $b variable.
+
+The second command adds a file to the transfer queue of the new BitsJob object that is stored in the $b variable.
+
+The third command uses the BitsJob parameter to pass the BitsJob object that is stored in the $b parameter to the Resume-BitsTransfer cmdlet. This command starts the BITS transfer job.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 3 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Get-BitsTransfer -Name testjob1 | Resume-BitsTransfer                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command resumes the BITS transfer that is identified by the specified display name. 
+
+The command prompt returns after the job is complete or after the job enters an error state. The output of the Get-BitsTransfer cmdlet is a BitsJob object. This output is piped to the Resume-BitsTransfer cmdlet. If the BITS transfer job is already active, it will continue to run.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<!-- Link section  -->
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>http://go.microsoft.com/fwlink/?LinkId=141432</maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Add-BitsFile</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Complete-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Get-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Remove-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Set-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Start-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Suspend-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+
+
+<!-- v 1.1.0.9 -->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>
+                   Set-BitsTransfer
+		</command:name>
+		<maml:description>
+			<maml:para>Modifies the properties of an existing Background Intelligent Transfer Service (BITS) transfer job.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para></maml:para>
+		</maml:copyright>
+		<command:verb>Set</command:verb>
+		<command:noun>BitsTransfer</command:noun>
+		<dev:version></dev:version>
+	</command:details>
+	<maml:description>
+		<maml:para>The Set-BitsTransfer cmdlet modifies the properties of an existing BITS transfer job. You can specify the job that you want to modify in the BitsJob parameter. Or, you can specify the job by passing it through the pipeline.</maml:para>
+	</maml:description>
+	<!-- Cmdlet syntax section-->
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Set-BitsTransfer</maml:name>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+				<maml:name>BitsJob</maml:name>
+				<maml:description>
+					<maml:para>Specifies the BITS transfer jobs on which to set properties. You can pipe a value to this parameter from other cmdlets that return BitsJob objects, such as Get-BitsTransfer.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">BitsJob[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Authentication</maml:name>
+				<maml:description>
+					<maml:para>Specifies the authentication mechanism to be used at the server. Possible values are:
+
+- Basic: Basic is a scheme in which the user name and password are sent in clear text to the server or proxy.
+- Digest: Digest is a challenge-response scheme that uses a server-specified data string for the challenge.
+- NTLM: NTLM is a challenge-response scheme that uses the credentials of the user for authentication in a Windows-based network environment.
+- Negotiate (the default): Negotiate is a challenge-response scheme that negotiates with the server or proxy to determine which scheme to use for authentication. For example, this parameter value allows negotiation to determine whether the Kerberos protocol or NTLM is used.
+- Passport: Passport is a centralized authentication service provided by Microsoft that offers a single logon for member sites.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Credential</maml:name>
+				<maml:description>
+					<maml:para>Specifies the credentials to use to authenticate the user at the server. The default is the current user. Type a user name, such as &quot;User01&quot;, &quot;Domain01\User01&quot;, or &quot;User@Contoso.com&quot;. Or, use the Get-Credential cmdlet to create the value for this parameter. When you type a user name, you will be prompted for a password.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Description</maml:name>
+				<maml:description>
+					<maml:para>Describes the BITS transfer job. The description is limited to 1,024 characters.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DisplayName</maml:name>
+				<maml:description>
+					<maml:para>Specifies a display name for the BITS transfer job. The display name provides a user-friendly way to differentiate BITS transfer jobs.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Priority</maml:name>
+				<maml:description>
+					<maml:para>Sets the priority of the BITS transfer job, which affects bandwidth usage. You can specify the following values:
+
+- Foreground (default): Transfers the job in the foreground. Foreground transfers compete for network bandwidth with other applications, which can impede the user's overall network experience. However, if the Start-BitsTransfer command is being used interactively, this is likely the best option. This is the highest priority level. 
+- High: Transfers the job in the background with a high priority. Background transfers use the idle network bandwidth of the client computer to transfer files. 
+- Normal: Transfers the job in the background with a normal priority. Background transfers use the idle network bandwidth of the client computer to transfer files.
+- Low: Transfers the job in the background with a low priority. Background transfers use the idle network bandwidth of the client to transfer files. This is the lowest background priority level.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ProxyAuthentication</maml:name>
+				<maml:description>
+					<maml:para>Specifies the authentication mechanism to use at the Web proxy. Possible values are:
+
+- Basic: Basic is a scheme in which the user name and password are sent in clear text to the server or proxy.
+- Digest: Digest is a challenge-response scheme that uses a server-specified data string for the challenge.
+- NTLM: NTLM is a challenge-response scheme that uses the credentials of the user for authentication in a Windows-based network environment.
+- Negotiate (the default): Negotiate is a challenge-response scheme that negotiates with the server or proxy to determine which scheme to use for authentication. For example, this parameter value allows negotiation to determine whether  the Kerberos protocol or NTLM is used.
+- Passport: Passport is a centralized authentication service provided by Microsoft that offers a single logon for member sites.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ProxyBypass</maml:name>
+				<maml:description>
+					<maml:para>Specifies a list of host names to use for a direct connection. The hosts in the list are tried in order until a successful connection is achieved. Specifying this parameter bypasses the  proxy. If this parameter is used, the ProxyUsage parameter must be set to Override; otherwise, an error occurs.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ProxyCredential</maml:name>
+				<maml:description>
+					<maml:para>Specifies the credentials to use to authenticate the user at the proxy. You can use the Get-Credential cmdlet to create a value for this parameter.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ProxyList</maml:name>
+				<maml:description>
+					<maml:para>Specifies a list of proxies to use. The proxies in the list are tried in order until a successful connection is achieved. If this parameter is specified and ProxyUsage is set to a value other than Override, an error occurs. </maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Uri[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ProxyUsage</maml:name>
+				<maml:description>
+					<maml:para>Specifies the proxy usage settings. Possible values are:
+
+- SystemDefault (the default): Use the system default proxy settings.
+- NoProxy: Do not use a proxy to transfer the files. Use this option when you transfer files within a local area network (LAN).
+- AutoDetect: Automatically detect proxy settings. BITS detects proxy settings for each file in the job.
+- Override: Specify the proxies or servers to use. If the ProxyList parameter is also specified, the proxies in that list are used. If the ProxyBypass parameter is also specified, the servers in that list are used. In both cases, the first member of the list is used. If the first member is unreachable, the subsequent members are tried until a member is contacted successfully.
+</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>RetryInterval</maml:name>
+				<maml:description>
+					<maml:para>Specifies the minimum length of time, in seconds, that BITS waits before trying to transfer the file after BITS encounters a transient error. The minimum allowed value is 60 seconds. If this value exceeds the RetryTimeout value from the BitsJob object, BITS will not retry the transfer. Instead, BITS sets the state of the BITS transfer job to the Error state.
+
+The default is 600 seconds (10 minutes).
+</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>RetryTimeout</maml:name>
+				<maml:description>
+					<maml:para>Specifies the length of time, in seconds, that BITS tries to transfer the file after the first transient error occurs. Setting the retry period to 0 prevents retries. If the retry period value exceeds the JobInactivityTimeout Group Policy setting (90-day default), BITS cancels the job.
+
+The default value is 1,209,600 seconds (14 days).</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>SetOwnerToCurrentUser</maml:name>
+				<maml:description>
+					<maml:para>Sets the owner of the BITS transfer job to the current user.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>Confirm</maml:name>
+    			<maml:description>
+				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
+    			</maml:description>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>WhatIf</maml:name>
+    			<maml:description>
+				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+    			</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<!-- Cmdlet parameter section  -->
+	<command:parameters>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Authentication</maml:name>
+			<maml:description>
+				<maml:para>Specifies the authentication mechanism to be used at the server. Possible values are:
+
+- Basic: Basic is a scheme in which the user name and password are sent in clear text to the server or proxy.
+- Digest: Digest is a challenge-response scheme that uses a server-specified data string for the challenge.
+- NTLM: NTLM is a challenge-response scheme that uses the credentials of the user for authentication in a Windows-based network environment.
+- Negotiate (the default): Negotiate is a challenge-response scheme that negotiates with the server or proxy to determine which scheme to use for authentication. For example, this parameter value allows negotiation to determine whether the Kerberos protocol or NTLM is used.
+- Passport: Passport is a centralized authentication service provided by Microsoft that offers a single logon for member sites.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>Negotiate</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+			<maml:name>BitsJob</maml:name>
+			<maml:description>
+				<maml:para>Specifies the BITS transfer jobs on which to set properties. You can pipe a value to this parameter from other cmdlets that return BitsJob objects, such as Get-BitsTransfer.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">BitsJob[]</command:parameterValue>
+			<dev:type>
+				<maml:name>BitsJob[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Credential</maml:name>
+			<maml:description>
+				<maml:para>Specifies the credentials to use to authenticate the user at the server. The default is the current user. Type a user name, such as &quot;User01&quot;, &quot;Domain01\User01&quot;, or &quot;User@Contoso.com&quot;. Or, use the Get-Credential cmdlet to create the value for this parameter. When you type a user name, you will be prompted for a password.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			<dev:type>
+				<maml:name>PSCredential</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Description</maml:name>
+			<maml:description>
+				<maml:para>Describes the BITS transfer job. The description is limited to 1,024 characters.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>DisplayName</maml:name>
+			<maml:description>
+				<maml:para>Specifies a display name for the BITS transfer job. The display name provides a user-friendly way to differentiate BITS transfer jobs.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Priority</maml:name>
+			<maml:description>
+				<maml:para>Sets the priority of the BITS transfer job, which affects bandwidth usage. You can specify the following values:
+
+- Foreground (default): Transfers the job in the foreground. Foreground transfers compete for network bandwidth with other applications, which can impede the user's overall network experience. However, if the Start-BitsTransfer command is being used interactively, this is likely the best option. This is the highest priority level. 
+- High: Transfers the job in the background with a high priority. Background transfers use the idle network bandwidth of the client computer to transfer files. 
+- Normal: Transfers the job in the background with a normal priority. Background transfers use the idle network bandwidth of the client computer to transfer files.
+- Low: Transfers the job in the background with a low priority. Background transfers use the idle network bandwidth of the client to transfer files. This is the lowest background priority level.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>Normal</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ProxyAuthentication</maml:name>
+			<maml:description>
+				<maml:para>Specifies the authentication mechanism to use at the Web proxy. Possible values are:
+
+- Basic: Basic is a scheme in which the user name and password are sent in clear text to the server or proxy.
+- Digest: Digest is a challenge-response scheme that uses a server-specified data string for the challenge.
+- NTLM: NTLM is a challenge-response scheme that uses the credentials of the user for authentication in a Windows-based network environment.
+- Negotiate (the default): Negotiate is a challenge-response scheme that negotiates with the server or proxy to determine which scheme to use for authentication. For example, this parameter value allows negotiation to determine whether  the Kerberos protocol or NTLM is used.
+- Passport: Passport is a centralized authentication service provided by Microsoft that offers a single logon for member sites.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>Negotiate</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ProxyBypass</maml:name>
+			<maml:description>
+				<maml:para>Specifies a list of host names to use for a direct connection. The hosts in the list are tried in order until a successful connection is achieved. Specifying this parameter bypasses the  proxy. If this parameter is used, the ProxyUsage parameter must be set to Override; otherwise, an error occurs.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+			<dev:type>
+				<maml:name>string[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ProxyCredential</maml:name>
+			<maml:description>
+				<maml:para>Specifies the credentials to use to authenticate the user at the proxy. You can use the Get-Credential cmdlet to create a value for this parameter.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			<dev:type>
+				<maml:name>PSCredential</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ProxyList</maml:name>
+			<maml:description>
+				<maml:para>Specifies a list of proxies to use. The proxies in the list are tried in order until a successful connection is achieved. If this parameter is specified and ProxyUsage is set to a value other than Override, an error occurs. </maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Uri[]</command:parameterValue>
+			<dev:type>
+				<maml:name>Uri[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ProxyUsage</maml:name>
+			<maml:description>
+				<maml:para>Specifies the proxy usage settings. Possible values are:
+
+- SystemDefault (the default): Use the system default proxy settings.
+- NoProxy: Do not use a proxy to transfer the files. Use this option when you transfer files within a local area network (LAN).
+- AutoDetect: Automatically detect proxy settings. BITS detects proxy settings for each file in the job.
+- Override: Specify the proxies or servers to use. If the ProxyList parameter is also specified, the proxies in that list are used. If the ProxyBypass parameter is also specified, the servers in that list are used. In both cases, the first member of the list is used. If the first member is unreachable, the subsequent members are tried until a member is contacted successfully.
+</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>SystemDefault</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>RetryInterval</maml:name>
+			<maml:description>
+				<maml:para>Specifies the minimum length of time, in seconds, that BITS waits before trying to transfer the file after BITS encounters a transient error. The minimum allowed value is 60 seconds. If this value exceeds the RetryTimeout value from the BitsJob object, BITS will not retry the transfer. Instead, BITS sets the state of the BITS transfer job to the Error state.
+
+The default is 600 seconds (10 minutes).
+</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			<dev:type>
+				<maml:name>int</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>600</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>RetryTimeout</maml:name>
+			<maml:description>
+				<maml:para>Specifies the length of time, in seconds, that BITS tries to transfer the file after the first transient error occurs. Setting the retry period to 0 prevents retries. If the retry period value exceeds the JobInactivityTimeout Group Policy setting (90-day default), BITS cancels the job.
+
+The default value is 1,209,600 seconds (14 days).</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			<dev:type>
+				<maml:name>int</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>1209600</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>SetOwnerToCurrentUser</maml:name>
+			<maml:description>
+				<maml:para>Sets the owner of the BITS transfer job to the current user.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>Confirm</maml:name>
+    			<maml:description>
+				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
+    			</maml:description>
+    			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>	
+				<dev:type>
+  				<maml:name>SwitchParameter</maml:name> 
+					<maml:uri /> 
+					</dev:type>
+ 			<dev:defaultValue /> 
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>WhatIf</maml:name>
+    			<maml:description>
+				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+    			</maml:description>
+    			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>	
+				<dev:type>
+  				<maml:name>SwitchParameter</maml:name> 
+					<maml:uri /> 
+					</dev:type>
+ 			<dev:defaultValue /> 
+			</command:parameter>
+	</command:parameters>
+	<!-- Input - Output section-->
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name>Microsoft.BackgroundIntelligentTransfer.Management.BitsJob[]</maml:name>
+				<maml:uri/>
+				<maml:description />
+			</dev:type>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					This cmdlet accepts one or more BitsJob objects as input that populates the BitsJob parameter.
+				</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Microsoft.BackgroundIntelligentTransfer.Management.BitsJob[]</maml:name>
+				<maml:uri />
+				<maml:description />
+			</dev:type>   
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					This cmdlet generates the BitsJob objects that are associated with the BITS transfer jobs that were modified.
+				</maml:para>
+			</maml:description> 
+		</command:returnValue>
+	</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>
+                          
+                        </maml:para>
+		</maml:alert>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<!-- Example section  --> 
+	<command:examples>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+$b = Get-BitsTransfer -JobId 10778CFA-C1D7-4A82-8A9D-80B19224879C
+Set-BitsTransfer -BitsJob $b -Priority High                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command modifies the priority of an existing BITS transfer job.
+
+The first command retrieves the BITS transfer job specified by the JobId parameter and then stores it in the $b variable.
+
+The second command uses the BitsJob parameter to pass the BitsJob object stored in the $b variable to the Set-BitsTransfer parameter. The Priority parameter is used to set the priority of the BITS transfer job to High.
+</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 2 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Get-BitsTransfer -AllUsers -Name *Microsoft* | Set-BitsTransfer -SetOwnerToCurrentUser                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command makes the current user the owner of a set of existing BITS transfer jobs. 
+
+The output of the Get-BitsTransfer cmdlet is a set of BitsJob objects whose display name contains &quot;Microsoft&quot;. This output is passed to the Set-BitsTransfer cmdlet through the pipeline. The SetOwnerToCurrentUser parameter specifies that the owner of each BITS transfer job is the current user.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 3 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+$b = Get-BitsTransfer -JobId 10778CFA-C1D7-4A82-8A9D-80B19224879C
+$c = Get-Credential
+Set-BitsTransfer -BitsJob $b -ProxyUsage AutoDetect -ProxyAuthentication $c                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command changes the proxy settings of an existing BITS transfer job.
+
+The first command retrieves the BITS transfer job identified by the JobId parameter and then stores it in the $b variable. 
+
+The second command retrieves credentials from the user and then stores them in the $c variable.
+
+The third command uses the BitsJob parameter to pass the BitsJob object stored in the $b variable to the Set-BitsTransfer cmdlet. It uses the ProxyAuthentication parameter to pass the PSCredential object stored in the $c parameter. The ProxyUsage parameter allows the BITS transfer job to automatically discover the Web proxy server by using the Web Proxy Autodiscovery Protocol (WPAD) protocol. The supplied set of credentials is used to authenticate the user at the proxy server.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 4 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Get-BitsTransfer | Set-BitsTransfer -ProxyUsage Override -ProxyList http://proxy1,http://proxy2:81 -ProxyBypass http://directconnect                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command changes the proxy settings of an existing BITS transfer job. 
+
+The output of the Get-BitsTransfer cmdlet is the set of BitsJob objects that are owned by the current user. This output is piped to the Set-BitsTransfer cmdlet. The Override value that is specified in the ProxyUsage parameter indicates that an explicit list of proxy server and bypassed host names will be provided.
+
+The ProxyList parameter specifies two proxy servers. The first server in the list (http://proxy1) is used. If that connection fails, the command tries the connection by using the second server in the list (http://proxy2:81). If both connections fail, the job fails.
+
+When a list of host names is specified in the ProxyBypass parameter, the connection that is made is a direct connection that does not use a proxy server. In this example, no proxy server is used to add a file to the BITS transfer queue on the &quot;directconnect&quot; server.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<!-- Link section  -->
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>http://go.microsoft.com/fwlink/?LinkId=141433</maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Add-BitsFile</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Complete-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Get-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Remove-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Resume-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Start-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Suspend-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+
+
+<!-- v 1.1.0.9 -->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>
+                   Start-BitsTransfer
+		</command:name>
+		<maml:description>
+			<maml:para>Creates a new Background Intelligent Transfer Service (BITS) transfer job.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para></maml:para>
+		</maml:copyright>
+		<command:verb>Start</command:verb>
+		<command:noun>BitsTransfer</command:noun>
+		<dev:version></dev:version>
+	</command:details>
+	<maml:description>
+		<maml:para>The Start-BitsTransfer cmdlet creates a new BITS transfer job to transfer one or more files between a client computer and a server. The TransferType parameter specifies the direction of the transfer. By default, after the cmdlet begins the transfer, the command prompt is not available until the transfer is complete or until the transfer enters an error state. If the state of the returned BitsJob object is Error, the error code and description are contained in the object and can be used for analysis.
+
+The Start-BitsTransfer cmdlet supports downloading multiple files from a server to a client computer, but it does not generally support uploading multiple files from a client computer to a server. If you need to upload more than one file, you can use the Import-CSV cmdlet to pipe the output to the Add-BitsFile cmdlet to upload multiple files. Or, if you need to upload more than one file, consider using a cabinet file (.cab) or a compressed file (.zip).</maml:para>
+	</maml:description>
+	<!-- Cmdlet syntax section-->
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Start-BitsTransfer</maml:name>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Source</maml:name>
+				<maml:description>
+					<maml:para>Specifies the source location and the names of the files that you want to transfer. The source file names are paired with the corresponding destination file names. For example, the first file name specified in the Source parameter corresponds to the first file name in the Destination parameter, and the second file name in the Source parameter corresponds to  the second file name in the Destination parameter. The Source and Destination parameters must have the same number of elements; otherwise, the command produces an error. You can use standard wildcard characters such as the asterisk (*) and the question mark (?). Or, you can use a range operator such as &quot;[a-r]&quot;. </maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>Destination</maml:name>
+				<maml:description>
+					<maml:para>Specifies the destination location and the names of the files that you want to transfer. The destination names are paired with the corresponding source file names. For example, the first file name specified in the Source parameter corresponds to the first file name in the Destination parameter, and the second file name in the Source parameter corresponds to the second file name in the Destination parameter. The Source and Destination parameters must have the same number of elements; otherwise, the command produces an error.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="true" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Asynchronous</maml:name>
+				<maml:description>
+					<maml:para>Allows the BITS transfer job to be created and then processed in the background. The command prompt reappears immediately after the BITS transfer job is created. The returned BitsJob object can be used to monitor status and progress.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Authentication</maml:name>
+				<maml:description>
+					<maml:para>Specifies the authentication mechanism to be used at the server. Possible values are:
+
+- Basic: Basic is a scheme in which the user name and password are sent in clear text to the server or proxy.
+- Digest: Digest is a challenge-response scheme that uses a server-specified data string for the challenge.
+- NTLM: NTLM is a challenge-response scheme that uses the credentials of the user for authentication in a Windows-based network environment.
+- Negotiate (the default): Negotiate is a challenge-response scheme that negotiates with the server or proxy to determine which scheme to use for authentication. For example, this parameter value allows negotiation to determine whether the Kerberos protocol or NTLM is used.
+- Passport: Passport is a centralized authentication service provided by Microsoft that offers a single logon for member sites.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Credential</maml:name>
+				<maml:description>
+					<maml:para>Specifies the credentials to use to authenticate the user at the server. The default is the current user. Type a user name, such as &quot;User01&quot;, &quot;Domain01\User01&quot;, or &quot;User@Contoso.com&quot;. Or, use the Get-Credential cmdlet to create the value for this parameter. When you type a user name, you will be prompted for a password.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Description</maml:name>
+				<maml:description>
+					<maml:para>Describes the BITS transfer job. The description is limited to 1,024 characters.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DisplayName</maml:name>
+				<maml:description>
+					<maml:para>Specifies a display name for the BITS transfer job. The display name provides a user-friendly way to differentiate BITS transfer jobs.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Priority</maml:name>
+				<maml:description>
+					<maml:para>Sets the priority of the BITS transfer job, which affects bandwidth usage. You can specify the following values:
+
+- Foreground (default): Transfers the job in the foreground. Foreground transfers compete for network bandwidth with other applications, which can impede the user's overall network experience. However, if the Start-BitsTransfer command is being used interactively, this is likely the best option. This is the highest priority level. 
+- High: Transfers the job in the background with a high priority. Background transfers use the idle network bandwidth of the client computer to transfer files. 
+- Normal: Transfers the job in the background with a normal priority. Background transfers use the idle network bandwidth of the client computer to transfer files.
+- Low: Transfers the job in the background with a low priority. Background transfers use the idle network bandwidth of the client to transfer files. This is the lowest background priority level.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ProxyAuthentication</maml:name>
+				<maml:description>
+					<maml:para>Specifies the authentication mechanism to use at the Web proxy. Possible values are:
+
+- Basic: Basic is a scheme in which the user name and password are sent in clear-text to the server or proxy.
+- Digest: Digest is a challenge-response scheme that uses a server-specified data string for the challenge.
+- NTLM: NTLM is a challenge-response scheme that uses the credentials of the user for authentication in a Windows-based network environment.
+- Negotiate (the default): Negotiate is a challenge-response scheme that negotiates with the server or proxy to determine which scheme to use for authentication. For example, this parameter value allows negotiation to determine whether  the Kerberos protocol or NTLM is used.
+- Passport: Passport is a centralized authentication service provided by Microsoft that offers a single logon for member sites.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ProxyBypass</maml:name>
+				<maml:description>
+					<maml:para>Specifies a list of host names to use for a direct connection. The hosts in the list are tried in order until a successful connection is achieved. Specifying this parameter bypasses the proxy. If this parameter is used, the ProxyUsage parameter must be set to Override; otherwise, an error occurs.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ProxyCredential</maml:name>
+				<maml:description>
+					<maml:para>Specifies the credentials to use to authenticate the user at the proxy. You can use the Get-Credential cmdlet to create a value for this parameter.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ProxyList</maml:name>
+				<maml:description>
+					<maml:para>Specifies a list of proxies to use. The proxies in the list are tried in order until a successful connection is achieved. If this parameter is specified and ProxyUsage is set to a value other than Override, an error occurs. 
+</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Uri[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ProxyUsage</maml:name>
+				<maml:description>
+					<maml:para>Specifies the proxy usage settings. Possible values are:
+
+- SystemDefault (the default): Use the system default proxy settings.
+- NoProxy: Do not use a proxy to transfer files. Use this option when you transfer files within a local area network (LAN).
+- AutoDetect: Automatically detect proxy settings. BITS detects proxy settings for each file in the job.
+- Override: Specify the proxies or servers to use. If the ProxyList parameter is also specified, the proxies in that list are used. If the ProxyBypass parameter is also specified, the servers in that list are used. In both cases, the first member of the list is used. If the first member is unreachable, the subsequent members are tried until a member is contacted successfully.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>RetryInterval</maml:name>
+				<maml:description>
+					<maml:para>Specifies the minimum length of time, in seconds, that BITS waits before trying to transfer the file after BITS encounters a transient error. The minimum allowed value is 60 seconds. If this value exceeds the RetryTimeout value from the BitsJob object, BITS will not retry the transfer. Instead, BITS sets the state of the BITS transfer job to the Error state.
+
+The default is 600 seconds (10 minutes).</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>RetryTimeout</maml:name>
+				<maml:description>
+					<maml:para>Specifies the length of time, in seconds, that BITS tries to transfer the file after the first transient error occurs. Setting the retry period to 0 prevents retries and forces the job into the BG_JOB_STATE_ERROR state when an error occurs. If the retry period value exceeds the JobInactivityTimeout Group Policy setting (90-day default), BITS cancels the job after the JobInactivityTimeout Group Policy setting is exceeded.
+
+The default is 1,209,600 seconds (14 days).</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Suspended</maml:name>
+				<maml:description>
+					<maml:para>Suspends the BITS transfer job. If the Suspended parameter is not specified, the job automatically begins the transfer job. If the Suspended parameter is specified, the command prompt returns immediately after the BITS transfer job is created. You can use the Resume-BitsTransfer cmdlet to start the transfer job.</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>TransferType</maml:name>
+				<maml:description>
+					<maml:para>Specifies the BITS transfer job type. Possible values are: 
+
+- Download (the default): Specifies that the transfer job downloads files to the client computer.
+- Upload: Specifies that the transfer job uploads a file to the server. 
+- UploadReply: Specifies that the transfer job uploads a file to the server and receives a reply file from the server. </maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>Confirm</maml:name>
+    			<maml:description>
+				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
+    			</maml:description>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>WhatIf</maml:name>
+    			<maml:description>
+				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+    			</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<!-- Cmdlet parameter section  -->
+	<command:parameters>
+		<command:parameter required="false" variableLength="false" globbing="true" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Asynchronous</maml:name>
+			<maml:description>
+				<maml:para>Allows the BITS transfer job to be created and then processed in the background. The command prompt reappears immediately after the BITS transfer job is created. The returned BitsJob object can be used to monitor status and progress.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Authentication</maml:name>
+			<maml:description>
+				<maml:para>Specifies the authentication mechanism to be used at the server. Possible values are:
+
+- Basic: Basic is a scheme in which the user name and password are sent in clear text to the server or proxy.
+- Digest: Digest is a challenge-response scheme that uses a server-specified data string for the challenge.
+- NTLM: NTLM is a challenge-response scheme that uses the credentials of the user for authentication in a Windows-based network environment.
+- Negotiate (the default): Negotiate is a challenge-response scheme that negotiates with the server or proxy to determine which scheme to use for authentication. For example, this parameter value allows negotiation to determine whether the Kerberos protocol or NTLM is used.
+- Passport: Passport is a centralized authentication service provided by Microsoft that offers a single logon for member sites.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>Negotiate</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Credential</maml:name>
+			<maml:description>
+				<maml:para>Specifies the credentials to use to authenticate the user at the server. The default is the current user. Type a user name, such as &quot;User01&quot;, &quot;Domain01\User01&quot;, or &quot;User@Contoso.com&quot;. Or, use the Get-Credential cmdlet to create the value for this parameter. When you type a user name, you will be prompted for a password.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			<dev:type>
+				<maml:name>PSCredential</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Description</maml:name>
+			<maml:description>
+				<maml:para>Describes the BITS transfer job. The description is limited to 1,024 characters.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<maml:name>Destination</maml:name>
+			<maml:description>
+				<maml:para>Specifies the destination location and the names of the files that you want to transfer. The destination names are paired with the corresponding source file names. For example, the first file name specified in the Source parameter corresponds to the first file name in the Destination parameter, and the second file name in the Source parameter corresponds to the second file name in the Destination parameter. The Source and Destination parameters must have the same number of elements; otherwise, the command produces an error.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+			<dev:type>
+				<maml:name>string[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>DisplayName</maml:name>
+			<maml:description>
+				<maml:para>Specifies a display name for the BITS transfer job. The display name provides a user-friendly way to differentiate BITS transfer jobs.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>BitsJob</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Priority</maml:name>
+			<maml:description>
+				<maml:para>Sets the priority of the BITS transfer job, which affects bandwidth usage. You can specify the following values:
+
+- Foreground (default): Transfers the job in the foreground. Foreground transfers compete for network bandwidth with other applications, which can impede the user's overall network experience. However, if the Start-BitsTransfer command is being used interactively, this is likely the best option. This is the highest priority level. 
+- High: Transfers the job in the background with a high priority. Background transfers use the idle network bandwidth of the client computer to transfer files. 
+- Normal: Transfers the job in the background with a normal priority. Background transfers use the idle network bandwidth of the client computer to transfer files.
+- Low: Transfers the job in the background with a low priority. Background transfers use the idle network bandwidth of the client to transfer files. This is the lowest background priority level.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>Normal</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ProxyAuthentication</maml:name>
+			<maml:description>
+				<maml:para>Specifies the authentication mechanism to use at the Web proxy. Possible values are:
+
+- Basic: Basic is a scheme in which the user name and password are sent in clear-text to the server or proxy.
+- Digest: Digest is a challenge-response scheme that uses a server-specified data string for the challenge.
+- NTLM: NTLM is a challenge-response scheme that uses the credentials of the user for authentication in a Windows-based network environment.
+- Negotiate (the default): Negotiate is a challenge-response scheme that negotiates with the server or proxy to determine which scheme to use for authentication. For example, this parameter value allows negotiation to determine whether  the Kerberos protocol or NTLM is used.
+- Passport: Passport is a centralized authentication service provided by Microsoft that offers a single logon for member sites.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>Negotiate</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ProxyBypass</maml:name>
+			<maml:description>
+				<maml:para>Specifies a list of host names to use for a direct connection. The hosts in the list are tried in order until a successful connection is achieved. Specifying this parameter bypasses the proxy. If this parameter is used, the ProxyUsage parameter must be set to Override; otherwise, an error occurs.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+			<dev:type>
+				<maml:name>string[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ProxyCredential</maml:name>
+			<maml:description>
+				<maml:para>Specifies the credentials to use to authenticate the user at the proxy. You can use the Get-Credential cmdlet to create a value for this parameter.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			<dev:type>
+				<maml:name>PSCredential</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ProxyList</maml:name>
+			<maml:description>
+				<maml:para>Specifies a list of proxies to use. The proxies in the list are tried in order until a successful connection is achieved. If this parameter is specified and ProxyUsage is set to a value other than Override, an error occurs. 
+</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Uri[]</command:parameterValue>
+			<dev:type>
+				<maml:name>Uri[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ProxyUsage</maml:name>
+			<maml:description>
+				<maml:para>Specifies the proxy usage settings. Possible values are:
+
+- SystemDefault (the default): Use the system default proxy settings.
+- NoProxy: Do not use a proxy to transfer files. Use this option when you transfer files within a local area network (LAN).
+- AutoDetect: Automatically detect proxy settings. BITS detects proxy settings for each file in the job.
+- Override: Specify the proxies or servers to use. If the ProxyList parameter is also specified, the proxies in that list are used. If the ProxyBypass parameter is also specified, the servers in that list are used. In both cases, the first member of the list is used. If the first member is unreachable, the subsequent members are tried until a member is contacted successfully.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>SystemDefault</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>RetryInterval</maml:name>
+			<maml:description>
+				<maml:para>Specifies the minimum length of time, in seconds, that BITS waits before trying to transfer the file after BITS encounters a transient error. The minimum allowed value is 60 seconds. If this value exceeds the RetryTimeout value from the BitsJob object, BITS will not retry the transfer. Instead, BITS sets the state of the BITS transfer job to the Error state.
+
+The default is 600 seconds (10 minutes).</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			<dev:type>
+				<maml:name>int</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>600</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>RetryTimeout</maml:name>
+			<maml:description>
+				<maml:para>Specifies the length of time, in seconds, that BITS tries to transfer the file after the first transient error occurs. Setting the retry period to 0 prevents retries and forces the job into the BG_JOB_STATE_ERROR state when an error occurs. If the retry period value exceeds the JobInactivityTimeout Group Policy setting (90-day default), BITS cancels the job after the JobInactivityTimeout Group Policy setting is exceeded.
+
+The default is 1,209,600 seconds (14 days).</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			<dev:type>
+				<maml:name>int</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>1209600</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>Source</maml:name>
+			<maml:description>
+				<maml:para>Specifies the source location and the names of the files that you want to transfer. The source file names are paired with the corresponding destination file names. For example, the first file name specified in the Source parameter corresponds to the first file name in the Destination parameter, and the second file name in the Source parameter corresponds to  the second file name in the Destination parameter. The Source and Destination parameters must have the same number of elements; otherwise, the command produces an error. You can use standard wildcard characters such as the asterisk (*) and the question mark (?). Or, you can use a range operator such as &quot;[a-r]&quot;. </maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+			<dev:type>
+				<maml:name>string[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Suspended</maml:name>
+			<maml:description>
+				<maml:para>Suspends the BITS transfer job. If the Suspended parameter is not specified, the job automatically begins the transfer job. If the Suspended parameter is specified, the command prompt returns immediately after the BITS transfer job is created. You can use the Resume-BitsTransfer cmdlet to start the transfer job.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>TransferType</maml:name>
+			<maml:description>
+				<maml:para>Specifies the BITS transfer job type. Possible values are: 
+
+- Download (the default): Specifies that the transfer job downloads files to the client computer.
+- Upload: Specifies that the transfer job uploads a file to the server. 
+- UploadReply: Specifies that the transfer job uploads a file to the server and receives a reply file from the server. </maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>Download</dev:defaultValue>
+		</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>Confirm</maml:name>
+    			<maml:description>
+				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
+    			</maml:description>
+    			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>	
+				<dev:type>
+  				<maml:name>SwitchParameter</maml:name> 
+					<maml:uri /> 
+					</dev:type>
+ 			<dev:defaultValue /> 
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>WhatIf</maml:name>
+    			<maml:description>
+				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+    			</maml:description>
+    			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>	
+				<dev:type>
+  				<maml:name>SwitchParameter</maml:name> 
+					<maml:uri /> 
+					</dev:type>
+ 			<dev:defaultValue /> 
+			</command:parameter>
+	</command:parameters>
+	<!-- Input - Output section-->
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name>None</maml:name>
+				<maml:uri/>
+				<maml:description />
+			</dev:type>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					This cmdlet does not accept and input.
+				</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Microsoft.BackgroundIntelligentTransfer.Management.BitsJob</maml:name>
+				<maml:uri />
+				<maml:description />
+			</dev:type>   
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					When called with the Asynchronous parameter, this cmdlet passes the BitsJob object that is associated with the new BITS transfer job as output. Otherwise, no output is generated.
+				</maml:para>
+			</maml:description> 
+		</command:returnValue>
+	</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>
+                          You can cancel a transfer job that is running in synchronous mode (foreground priority) by pressing CTRL+C.
+
+If the BITS service is stopped during a synchronous file transfer job, then file transfer job will fail with an error and the file transfer job will not get removed from the BitsTransfer queue. The file transfer job remaining in the BitsTransfer queue can be viewed using the Get-BitsTransfer cmdlet. The file transfer job that remains in the BitsTransfer queue can removed using the Remove-BitsTransfer cmdlet.  Once the BITS service is restarted, the file transfer job will recover and resume the file transfer job, unless the file transfer job has been removed in the interim.
+                        </maml:para>
+		</maml:alert>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<!-- Example section  --> 
+	<command:examples>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Start-BitsTransfer -Source http://server01/servertestdir/testfile1.txt -Destination c:\clienttestdir\testfile1.txt                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command creates a new BITS transfer job that downloads a file from a server. The local and remote names of the file are specified in the Source and Destination parameters. Because the default transfer type is Download,  the http://Server01/servertestdir/testfile1.txt file is transferred to C:\clienttestdir\testfile1.txt on the client. The command prompt returns when the file transfer is complete or when it enters an error state. 
+
+When you upload files to an HTTP location, the TransferType parameter must be set to Upload.
+
+Because the Start-BitsTransfer cmdlet assumes that the first parameter is the source and that the second parameter is the destination when no value is specified, this command could be simplified as follows:
+
+Start-BitsTransfer http://server01/servertestdir/testfile1.txt c:\clienttestdir\testfile1.txt</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 2 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Import-CSV filelist.txt | Start-BitsTransfer                         </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command creates a new BITS transfer job that downloads multiple files from a server.
+
+The command imports the source and destination file locations and then pipes the locations  to the Start-BitsTransfer command. The Start-BitsTransfer command creates a new BITS transfer job, adds the files to a single job, and then transfers them sequentially to the client.
+
+The contents of the Filelist.txt file resemble the following information:
+
+Source, Destination
+http://server01/servertestdir/testfile1.txt, c:\clienttestdir\testfile1.txt 
+http://server01/servertestdir/testfile2.txt, c:\clienttestdir\testfile2.txt 
+http://server01/servertestdir/testfile3.txt, c:\clienttestdir\testfile3.txt 
+http://server01/servertestdir/testfile4.txt, c:\clienttestdir\testfile4.txt </maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 3 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Start-BitsTransfer -Source c:\clienttestdir\testfile1.txt -Destination http://server01/servertestdir/testfile1.txt -TransferType Upload                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command creates a new BITS transfer job that uploads a file to a server. The local and remote names of the file are specified in the Source and Destination parameters. Because the default transfer type is Download, the TransferType parameter must be set to Upload. The C:\clienttestdir\testfile1.txt file on the client is transferred to http://Server01/servertestdir/testfile1.txt. The command prompt returns when the file transfer is complete or enters an error state. 
+
+Important: The Start-BitsTransfer cmdlet lets you download multiple files from a server to a client computer, but it does not typically let you upload multiple files from a client computer to a server. It is possible to work around this limitation by using the Import-CSV cmdlet to pipe the output to the Start-BitsTransfer cmdlet. If you need to upload more than one file, you can also use a .cab or .zip file.
+
+Because the Start-BitsTransfer cmdlet assumes that the first parameter is the source and that the second parameter is the destination when no value  is specified, this command could be simplified as follows:
+
+Start-BitsTransfer c:\clienttestdir\testfile1.txt http://server01/servertestdir/testfile1.txt -TransferType Upload</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 4 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Start-BitsTransfer -Source http://server01/servertestdir/testfile1.txt, http://server01/servertestdir/testfile1.txt -Destination c:\clienttestdir\testfile1.txt, c:\clienttestdir\testfile1.txt                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command creates a new BITS transfer job that downloads multiple files from a server. 
+
+The local and remote names of the files are specified in the Source and Destination parameters. Because the default of the TransferType parameter is Download, the http://Server01/servertestdir/testfile1.txt and http://Server01/servertestdir/testfile2.txt files are transferred to C:\clienttestdir\testfile1.txt and C:\clienttestdir\testfile2.txt on the client computer. The command prompt returns when the file transfer is complete or enters an error state.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 5 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+$c = Get-Credential
+New-FileTransfer -DisplayName MyJob -Credential c$ -Source http://server01/servertestdir/testfile1.txt -Destination c:\clienttestdir\testfile1.txt                         </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>These commands create a new BITS transfer job that downloads a file from a server by using a specific set of credentials.
+
+The first command retrieves a set of credentials from the user by calling the Get-Credential cmdlet. The returned PSCredential object is stored in the $c variable.
+
+The second command uses the Credential parameter to pass the PSCredential object that is stored in the $c variable to the Start-BitsTransfer cmdlet. A new BITS transfer job is created that downloads the http://server01/servertestdir/testfile1.txt file to the client. The specified credentials are used to authenticate the user at the server. Additionally, the optional DisplayName parameter is used to give the BITS transfer job a unique name.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 6 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Import-CSV filelist.txt | Start-BitsTransfer -Asynchronous -Priority Normal                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command creates a new BITS transfer job that downloads multiple files from a server. The files will be downloaded sequentially, but they will be available immediately when the transfer job is complete.
+
+The command imports the source and destination file locations and then pipes them to the Start-BitsTransfer command. The Start-BitsTransfer command creates a new BITS transfer job, adds the files to a single job, and then transfers them sequentially to the client.
+
+The contents of the Filelist.txt file resemble the following information:
+
+Source, Destination
+http://server01/servertestdir/testfile1.txt, c:\clienttestdir\testfile1.txt 
+http://server01/servertestdir/testfile2.txt, c:\clienttestdir\testfile2.txt 
+http://server01/servertestdir/testfile3.txt, c:\clienttestdir\testfile3.txt 
+http://server01/servertestdir/testfile4.txt, c:\clienttestdir\testfile4.txt </maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 7 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Start-BitsTransfer -Source http://server01/servertestdir/*.* -Destination c:\clienttestdir\                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command creates a new BITS transfer job that downloads multiple files from a server.
+
+The Start-BitsTransfer command creates a new BITS transfer job. All the files are added to a single job and then transferred sequentially to the client.
+
+
+The following command shows another variation of a file transfer command that uses a wildcard character:
+
+Start-BitsTransfer -Source http://server01/servertestdir/*.txt -Destination c:\clienttestdir\
+
+
+The destination path cannot use wildcard characters. The destination path supports only a relative directory, a rooted path, or an implicit directory (the current directory). Additionally, the destination files cannot be renamed by using a wildcard character. For example, the following command does not work:
+
+c:\clienttestdir\*.BAK</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 8 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Import-CSV filelist.txt | Start-BitsTransfer -TransferType Upload                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command creates a new BITS transfer job that uploads multiple files from a client.
+
+The command imports the source and destination file locations and then pipes them to  to the Start-BitsTransfer command. The Start-BitsTransfer command creates a new BITS transfer job, adds the files to a single job, and then transfers them sequentially to the client.
+
+The contents of the Filelist.txt file resemble the following information: 
+
+Source, Destination
+c:\clienttestdir\testfile1.txt, http://server01/servertestdir/testfile1.txt 
+c:\clienttestdir\testfile2.txt, http://server01/servertestdir/testfile2.txt
+c:\clienttestdir\testfile3.txt, http://server01/servertestdir/testfile3.txt 
+c:\clienttestdir\testfile4.txt, http://server01/servertestdir/testfile4.txt </maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<!-- Link section  -->
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>http://go.microsoft.com/fwlink/?LinkId=141435</maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Add-BitsFile</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Complete-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Get-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Remove-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Resume-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Set-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Suspend-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+
+
+<!-- v 1.1.0.9 -->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>
+                   Suspend-BitsTransfer
+		</command:name>
+		<maml:description>
+			<maml:para>Suspends a Background Intelligent Transfer Service (BITS) transfer job.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para></maml:para>
+		</maml:copyright>
+		<command:verb>Suspend</command:verb>
+		<command:noun>BitsTransfer</command:noun>
+		<dev:version></dev:version>
+	</command:details>
+	<maml:description>
+		<maml:para>The Suspend-BitsTransfer cmdlet suspends (pauses) one or more BITS transfer jobs. If the transfer is already suspended, the cmdlet does nothing. You can restart the BITS transfer job by using the Resume-BitsTransfer cmdlet.</maml:para>
+	</maml:description>
+	<!-- Cmdlet syntax section-->
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Suspend-BitsTransfer</maml:name>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+				<maml:name>BitsJob</maml:name>
+				<maml:description>
+					<maml:para>Specifies the BITS transfer jobs to suspend. You can pipe a value to this parameter from other cmdlets that return BitsJob objects, such as Get-BitsTransfer.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">BitsJob[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>Confirm</maml:name>
+    			<maml:description>
+				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
+    			</maml:description>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>WhatIf</maml:name>
+    			<maml:description>
+				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+    			</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<!-- Cmdlet parameter section  -->
+	<command:parameters>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="1">
+			<maml:name>BitsJob</maml:name>
+			<maml:description>
+				<maml:para>Specifies the BITS transfer jobs to suspend. You can pipe a value to this parameter from other cmdlets that return BitsJob objects, such as Get-BitsTransfer.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">BitsJob[]</command:parameterValue>
+			<dev:type>
+				<maml:name>BitsJob[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>Confirm</maml:name>
+    			<maml:description>
+				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
+    			</maml:description>
+    			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>	
+				<dev:type>
+  				<maml:name>SwitchParameter</maml:name> 
+					<maml:uri /> 
+					</dev:type>
+ 			<dev:defaultValue /> 
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+   			 <maml:name>WhatIf</maml:name>
+    			<maml:description>
+				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+    			</maml:description>
+    			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>	
+				<dev:type>
+  				<maml:name>SwitchParameter</maml:name> 
+					<maml:uri /> 
+					</dev:type>
+ 			<dev:defaultValue /> 
+			</command:parameter>
+	</command:parameters>
+	<!-- Input - Output section-->
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name>Microsoft.BackgroundIntelligentTransfer.Management.BitsJob[]</maml:name>
+				<maml:uri/>
+				<maml:description />
+			</dev:type>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					This cmdlet accepts one or more BitsJob objects as input that populates the BitsJob parameter.
+				</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Microsoft.BackgroundIntelligentTransfer.Management.BitsJob[]</maml:name>
+				<maml:uri />
+				<maml:description />
+			</dev:type>   
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					This cmdlet generates the BitsJob objects that are associated with the BITS transfer jobs that were suspended.
+				</maml:para>
+			</maml:description> 
+		</command:returnValue>
+	</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>
+                          
+                        </maml:para>
+		</maml:alert>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<!-- Example section  --> 
+	<command:examples>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Get-BitsTransfer | Suspend-BitsTransfer                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command suspends all the BITS transfer jobs that are owned by the current user. 
+
+The output of Get-BitsTransfer is a set of BitsJob objects. This output is piped to the Suspend-BitsTransfer cmdlet.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 2 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+$b = Get-BitsTransfer -AllUsers
+Suspend-BitsTransfer -BitsJob $b                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command suspends all the BITS transfer jobs on the computer.
+
+The first command retrieves all the BitsJob objects on the computer and then stores them in the $b variable.
+
+The second command uses the BitsJob parameter to pass the BitsJob objects that are stored in the $b variable to the Suspend-BitsTransfer cmdlet.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<!-- Link section  -->
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online version:</maml:linkText>
+			<maml:uri>http://go.microsoft.com/fwlink/?LinkId=141436</maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Add-BitsFile</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Complete-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Get-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Remove-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Resume-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Set-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Start-BitsTransfer</maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+
+
+</helpItems>
